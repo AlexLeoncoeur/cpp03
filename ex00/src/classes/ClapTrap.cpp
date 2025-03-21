@@ -1,4 +1,4 @@
-#include "../include/ClapTrap.hpp"
+#include "../../include/ClapTrap.hpp"
 
 ClapTrap::ClapTrap(const std::string name)
 {
@@ -31,15 +31,7 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (this->_energyPoints <= 0)
-	{
-		std::cout	<< "Claptrap " 
-					<< this->_name
-					<< " has "
-					<< this->_energyPoints
-					<< " energy points and cannot attack!"
-					<< std::endl;
-	}
+	if (!this->checkHitEnergy())
 		return ;
 	this->_energyPoints--;
 	std::cout	<< "Claptrap " 
@@ -52,13 +44,43 @@ void	ClapTrap::attack(const std::string &target)
 				<< std::endl;
 }
 
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (!this->checkHitEnergy())
+		return ;
+	this->_energyPoints--;
+	std::cout	<< "Claptrap " 
+		<< this->_name
+		<< " repairs "
+		<< amount
+		<< " hit points!"
+		<< std::endl;
+}
+
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	this->_hitPoints--;
-	std::cout	<< "Claptrap " 
+
+	if (this->_hitPoints - amount < 0)
+		this->_hitPoints = 0;
+	else
+		this->_hitPoints -= amount;
+	std::cout	<< "Claptrap "
 				<< this->_name
 				<< " received "
 				<< amount
 				<< " points of damage!"
 				<< std::endl;
+}
+
+bool	ClapTrap::checkHitEnergy(void)
+{
+	if (this->_energyPoints <= 0 || this->_hitPoints <= 0)
+	{
+		std::cout	<< "Claptrap " 
+					<< this->_name
+					<< " doesnt have enough energy or hit points"
+					<< std::endl;
+		return (false);
+	}
+	return (true);
 }
