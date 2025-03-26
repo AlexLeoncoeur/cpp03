@@ -1,19 +1,29 @@
 #include "../../include/ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	std::cout	<< "ClapTrap default constructor called" << std::endl;
+	this->_name = "GenericClapTrap";
+	return ;
+}
+
 ClapTrap::ClapTrap(const std::string name)
 {
+	std::cout	<< "ClapTrap param constructor called" << std::endl;
 	this->_name = name;
 	return ;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &toCopy)
 {
+	std::cout	<< "ClapTrap copy constructor called" << std::endl;
 	*this = toCopy;
 	return ;
 }
 
 ClapTrap::~ClapTrap()
 {
+	std::cout	<< "ClapTrap destructor called" << std::endl;
 	return ;
 }
 
