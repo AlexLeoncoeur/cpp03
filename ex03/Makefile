@@ -15,7 +15,7 @@ RED		= \033[31;1m
 # FILES 
 CPP_FILES = main.cpp\
 
-CLASS_CPP_FILES =  ClapTrap.cpp ScavTrap.cpp FragTrap.cpp\
+CLASS_CPP_FILES =  ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp\
 #SRC_FILES = $(shell find $(SRC_DIR) -name '*.cpp')
 
 # DIRECTORIES 
@@ -42,7 +42,7 @@ $(CLASS_OBJ_DIR)%.o: $(CLASS_DIR)%.cpp
 #---------- FLAGS & COMPILATION ----------#
 
 CC = c++
-NAME = fragtrap
+NAME = diamondtrap
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
